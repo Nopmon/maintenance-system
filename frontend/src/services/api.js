@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // ตั้งค่า API URL
-const API_URL = 'http://localhost:5000/api';
+const API_URL = 'https://maintenance-system-app.herokuapp.com/api';
 
 // สร้าง axios instance
 const api = axios.create({
