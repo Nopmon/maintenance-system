@@ -1,0 +1,83 @@
+.assets-container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.assets-container h1 {
+  color: #333;
+  margin-bottom: 2rem;
+  font-size: 32px;
+}
+
+.assets-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.asset-card {
+  background: white;
+  padding: 1.5rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.asset-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.asset-card h3 {
+  color: #333;
+  margin-bottom: 1rem;
+  font-size: 18px;
+}
+
+.asset-card p {
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 0.5rem;
+}
+
+.asset-card strong {
+  color: #333;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.status-badge.active {
+  background: #EAF3DE;
+  color: #0F6E56;
+}
+
+.status-badge.maintenance {
+  background: #FAEEDA;
+  color: #BA7517;
+}
+
+.status-badge.inactive {
+  background: #f0f0f0;
+  color: #999;
+}
+
+.btn-small {
+  width: 100%;
+  padding: 0.5rem;
+  background: #378ADD;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 1rem;
+}

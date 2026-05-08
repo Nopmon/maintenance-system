@@ -1,0 +1,170 @@
+.dashboard-container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.dashboard-container h1 {
+  color: #333;
+  margin-bottom: 2rem;
+  font-size: 32px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.stat-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border-left: 4px solid #ddd;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+}
+
+.stat-card h3 {
+  color: #999;
+  font-size: 14px;
+  margin-bottom: 0.5rem;
+}
+
+.stat-value {
+  font-size: 32px;
+  font-weight: 700;
+  color: #333;
+  margin: 0;
+}
+
+.stat-card.active {
+  border-left-color: #378ADD;
+}
+
+.stat-card.active .stat-value {
+  color: #378ADD;
+}
+
+.stat-card.success {
+  border-left-color: #0F6E56;
+}
+
+.stat-card.success .stat-value {
+  color: #0F6E56;
+}
+
+.stat-card.danger {
+  border-left-color: #E24B4A;
+}
+
+.stat-card.danger .stat-value {
+  color: #E24B4A;
+}
+
+.table-container {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  overflow-x: auto;
+}
+
+.table-container h2 {
+  font-size: 18px;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+thead {
+  background: #f5f5f5;
+  border-bottom: 2px solid #ddd;
+}
+
+th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: #333;
+}
+
+td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+tbody tr:hover {
+  background: #fafaf8;
+}
+
+.status {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.status.pending {
+  background: #E6F1FB;
+  color: #378ADD;
+}
+
+.status.in_progress {
+  background: #FAEEDA;
+  color: #BA7517;
+}
+
+.status.completed {
+  background: #EAF3DE;
+  color: #0F6E56;
+}
+
+.priority {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.priority.low {
+  background: #EAF3DE;
+  color: #0F6E56;
+}
+
+.priority.medium {
+  background: #FAEEDA;
+  color: #BA7517;
+}
+
+.priority.high {
+  background: #F5C4B3;
+  color: #993C1D;
+}
+
+.priority.critical {
+  background: #FCEBEB;
+  color: #E24B4A;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 20px;
+}

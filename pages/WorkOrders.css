@@ -1,0 +1,138 @@
+.workorders-container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.workorders-container h1 {
+  color: #333;
+  margin-bottom: 2rem;
+  font-size: 32px;
+}
+
+.btn-primary {
+  padding: 0.75rem 1.5rem;
+  background: #378ADD;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  transition: background 0.3s;
+}
+
+.btn-primary:hover {
+  background: #0C447C;
+}
+
+.btn-small {
+  padding: 0.5rem 1rem;
+  background: #378ADD;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.form-container {
+  background: #f5f5f5;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.form-container input,
+.form-container textarea,
+.form-container select {
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 14px;
+}
+
+.form-container textarea {
+  grid-column: 1 / -1;
+  min-height: 100px;
+}
+
+.form-container button {
+  grid-column: 1 / -1;
+}
+
+.table-container {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+thead {
+  background: #f5f5f5;
+  border-bottom: 2px solid #ddd;
+}
+
+th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: #333;
+}
+
+td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+tbody tr:hover {
+  background: #fafaf8;
+}
+
+.status-select {
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.priority {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.priority.low {
+  background: #EAF3DE;
+  color: #0F6E56;
+}
+
+.priority.medium {
+  background: #FAEEDA;
+  color: #BA7517;
+}
+
+.priority.high {
+  background: #F5C4B3;
+  color: #993C1D;
+}
+
+.priority.critical {
+  background: #FCEBEB;
+  color: #E24B4A;
+}
