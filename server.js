@@ -1,13 +1,5 @@
 const express = require('express');
 const cors = require('cors');
-require('dotenv').config();
-
-const app = express();
-
-// Middleware
-app.use(cors());
-const express = require('express');
-const cors = require('cors');
 const path = require('path');
 require('dotenv').config();
 
@@ -19,22 +11,6 @@ app.use(express.json());
 
 // Serve static files จาก frontend/build
 app.use(express.static(path.join(__dirname, 'frontend/build')));
-
-// ============ API ROUTES ============
-// (ใส่ API routes เดิมทั้งหมดที่นี่)
-
-// ============ SERVE FRONTEND ============
-// ถ้า request ไม่ใช่ API ให้ส่ง index.html
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'frontend/build/index.html'));
-});
-
-// Start Server
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`🚀 Server running at http://localhost:${PORT}`);
-});
-app.use(express.json());
 
 // Mock Database
 const users = [
@@ -58,29 +34,21 @@ const assets = [
   { id: '1', name: 'ปั๊มน้ำ A1', code: 'ASSET-001', type: 'เครื่องจักร', status: 'active', location: 'ชั้น 1', lastMaintenance: '2024-04-01' },
   { id: '2', name: 'คอมเพรสเซอร์ B', code: 'ASSET-002', type: 'เครื่องจักร', status: 'active', location: 'ชั้น 2', lastMaintenance: '2024-03-15' },
   { id: '3', name: 'มอเตอร์ C2', code: 'ASSET-003', type: 'อุปกรณ์', status: 'maintenance', location: 'ชั้น 1', lastMaintenance: '2024-02-28' },
-  { id: '4', name: 'วาล์ว D3', code: 'ASSET-004', type: 'อุปกรณ์', status: 'active', location: 'ห้องท่อ', lastMaintenance: '2024-03-20' },
-  { id: '5', name: 'ปั๊ม E1', code: 'ASSET-005', type: 'เครื่องจักร', status: 'active', location: 'ถังน้ำ', lastMaintenance: '2024-01-15' },
 ];
 
 const teams = [
-  { id: '1', name: 'ทีม ก - ผลิตภัณฑ์', description: 'ทีมซ่อมหลักสำหรับเครื่องจักรผลิต', leader: 'เอมม่า ซูเปอร์ไวเซอร์', memberCount: 3, completedTasks: 28 },
-  { id: '2', name: 'ทีม ข - สาธารณูปโภค', description: 'ทีมซ่อมระบบสาธารณูปโภคและอาคาร', leader: 'เอมม่า ซูเปอร์ไวเซอร์', memberCount: 2, completedTasks: 15 },
+  { id: '1', name: 'ทีม ก - ผลิตภัณฑ์', description: 'ทีมซ่อมหลัก', leader: 'เอมม่า', memberCount: 3, completedTasks: 28 },
+  { id: '2', name: 'ทีม ข - สาธารณูปโภค', description: 'ทีมซ่อมระบบ', leader: 'เอมม่า', memberCount: 2, completedTasks: 15 },
 ];
 
 // ============ AUTH API ============
 app.post('/api/auth/login', (req, res) => {
   const { email, password } = req.body;
-
   const user = users.find(u => u.email === email && u.password === password);
-
   if (user) {
     res.json({
       token: 'fake-jwt-token-' + Date.now(),
-      user: {
-        id: user.id,
-        email: user.email,
-        role: user.role
-      }
+      user: { id: user.id, email: user.email, role: user.role }
     });
   } else {
     res.status(401).json({ error: 'Invalid email or password' });
@@ -130,10 +98,7 @@ app.get('/api/assets', (req, res) => {
 });
 
 app.post('/api/assets', (req, res) => {
-  const newAsset = {
-    id: String(assets.length + 1),
-    ...req.body
-  };
+  const newAsset = { id: String(assets.length + 1), ...req.body };
   assets.push(newAsset);
   res.json(newAsset);
 });
@@ -144,32 +109,18 @@ app.get('/api/teams', (req, res) => {
 });
 
 app.post('/api/teams', (req, res) => {
-  const newTeam = {
-    id: String(teams.length + 1),
-    ...req.body
-  };
+  const newTeam = { id: String(teams.length + 1), ...req.body };
   teams.push(newTeam);
   res.json(newTeam);
 });
 
 // ============ REPORTS API ============
 app.get('/api/reports/maintenance-history', (req, res) => {
-  res.json({
-    total: workOrders.length,
-    critical: 2,
-    high: 5,
-    medium: 12,
-    low: 9
-  });
+  res.json({ total: workOrders.length, critical: 2, high: 5, medium: 12, low: 9 });
 });
 
 app.get('/api/reports/cost-analysis', (req, res) => {
-  res.json({
-    totalCost: 45230,
-    labor: 18500,
-    parts: 15230,
-    materials: 11500
-  });
+  res.json({ totalCost: 45230, labor: 18500, parts: 15230, materials: 11500 });
 });
 
 app.get('/api/reports/equipment-status', (req, res) => {
@@ -185,9 +136,13 @@ app.get('/api', (req, res) => {
   res.json({ message: '✅ API ระบบซ่อมบำรุงทำงานได้แล้ว!' });
 });
 
+// Serve index.html สำหรับทุก route ที่ไม่ใช่ API
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'frontend/build/index.html'));
+});
+
 // Start Server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`🚀 Server running at http://localhost:${PORT}`);
-  console.log(`📍 Test API: http://localhost:${PORT}/api`);
 });
