@@ -10,7 +10,7 @@ app.use(cors());
 app.use(express.json());
 
 // Serve static files จาก frontend/build
-app.use(express.static(path.join(__dirname, 'frontend/build')));
+app.use(express.static(path.join(__dirname, './frontend/build')));
 
 // Mock Database
 const users = [
@@ -138,9 +138,9 @@ app.get('/api', (req, res) => {
 
 // Serve index.html สำหรับทุก route ที่ไม่ใช่ API
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'frontend/build/index.html'));
+  const filePath = path.join(__dirname, 'frontend/build/index.html');
+  res.sendFile(filePath);
 });
-
 // Start Server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
