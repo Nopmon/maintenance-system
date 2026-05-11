@@ -6,6 +6,34 @@ const app = express();
 
 // Middleware
 app.use(cors());
+const express = require('express');
+const cors = require('cors');
+const path = require('path');
+require('dotenv').config();
+
+const app = express();
+
+// Middleware
+app.use(cors());
+app.use(express.json());
+
+// Serve static files จาก frontend/build
+app.use(express.static(path.join(__dirname, 'frontend/build')));
+
+// ============ API ROUTES ============
+// (ใส่ API routes เดิมทั้งหมดที่นี่)
+
+// ============ SERVE FRONTEND ============
+// ถ้า request ไม่ใช่ API ให้ส่ง index.html
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'frontend/build/index.html'));
+});
+
+// Start Server
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`🚀 Server running at http://localhost:${PORT}`);
+});
 app.use(express.json());
 
 // Mock Database
