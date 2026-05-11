@@ -1,8 +1,7 @@
 import axios from 'axios';
 
 // ตั้งค่า API URL
-const API_URL = 'https://maintenance-system-app.herokuapp.com/api';
-
+const API_URL = 'https://maintenance-system-1-9jxx.onrender.com/api';
 // สร้าง axios instance
 const api = axios.create({
   baseURL: API_URL,

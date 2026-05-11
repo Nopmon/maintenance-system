@@ -1,6 +1,13 @@
 {
+ {
   "name": "maintenance-system",
+  "engines": {
+    "node": "18.17.0",
+    "npm": "9.0.0"
+  },
   "version": "1.0.0",
+  ...
+}
   "private": true,
   "dependencies": {
     "react": "^18.2.0",
